@@ -50,5 +50,12 @@ class BancoDeDados():
             else:
                 print('Escolha inválida. Tente novamente.')
         
-BancoDeDados().excluir_tabela('fornecedores')        
-BancoDeDados().criar_fornecedores()
+    def criar_estoques():
+        cursor.execute("""CREATE TABLE IF NOT EXISTS estoques (
+                    id INTEGER PRIMARY KEY,
+                    nome_produto TEXT NOT NULL,
+                    nome_fornecedor TEXT NOT NULL,
+                    quantidade TEXT NOT NULL)""")
+        
+
+BancoDeDados.criar_estoques()
