@@ -23,7 +23,7 @@
             <td>{{ fornecedor.nome_produto }}</td>
             <td>{{ fornecedor.numero_de_contato }}</td>
             <td class="acao">
-                <a href="/editar_fornecedor">
+                <a href="{{ url_for('editar_fornecedor', id=fornecedor.id) }}">
                     <img src="{{ url_for('static', filename='img/edicao.png') }}" alt="Edição">
                 </a>
                 <a href="{{ url_for('excluir_fornecedor', id=fornecedor.id) }}"

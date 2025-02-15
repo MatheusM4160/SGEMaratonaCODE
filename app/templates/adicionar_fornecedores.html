@@ -7,21 +7,21 @@
 {% endblock %}
 
 {% block content %}
-<h2>Cadastrar Fornecedor</h2>
-<form action="" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.fornecedor.label }}<br>
-        {{ form.fornecedor(size=32) }}
-    </p>    
-    <p>
-        {{ form.produto.label }}<br>
-        {{ form.produto(size=32) }}
-    </p>    
-    <p>
-        {{ form.numero_de_contato.label }}<br>
-        {{ form.numero_de_contato(size=32) }}
-    </p> 
-    <p>{{ form.botao_cadastrar() }}</p>
-</form>
+    <h2>Cadastrar Fornecedor</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.fornecedor.label }}<br>
+            {{ form.fornecedor(size=32) }}
+        </p>    
+        <p>
+            {{ form.produto.label }}<br>
+            {{ form.produto(size=32) }}
+        </p>    
+        <p>
+            {{ form.numero_de_contato.label }}<br>
+            {{ form.numero_de_contato(size=32) }}
+        </p> 
+        <p>{{ form.botao_cadastrar() }}</p>
+    </form>
 {% endblock %}

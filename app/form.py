@@ -7,3 +7,9 @@ class RegistrarFornecedores(FlaskForm):
     produto = StringField('Produto', validators=[DataRequired()])
     numero_de_contato = StringField('Número de Contato', validators=[DataRequired()])
     botao_cadastrar = SubmitField('Cadastrar')
+
+class EditarFornecedor(FlaskForm):
+    fornecedor = StringField('Fornecedor')
+    produto = StringField('Produto')
+    numero_de_contato = StringField('Número de Contato')
+    botao_alterar = SubmitField('Alterar')
