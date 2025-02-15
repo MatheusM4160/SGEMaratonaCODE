@@ -59,3 +59,18 @@ class FornecedoresDB:
             cursor.execute("""SELECT nome_fornecedor FROM fornecedores WHERE id=?""", (id,))
             resultado = cursor.fetchone()
             return resultado[0]
+        
+class EstoquesDB:
+    def __init__(self):
+        pass
+
+    def ler(self):
+        def fetch_all_as_dict(cursor):
+            colunas = [col[0] for col in cursor.description]
+            return [dict(zip(colunas, row)) for row in cursor.fetchall()]
+        
+        with sqlite3.connect(db) as con:
+            cursor = con.cursor()
+            cursor.execute("""SELECT * FROM estoques""")
+            resultado = fetch_all_as_dict(cursor)
+            return resultado

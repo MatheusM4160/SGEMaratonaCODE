@@ -7,5 +7,33 @@
 {% endblock %}
 
 {% block content %}
-
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>Produto</td>
+            <td>Fornecedor/s</td>
+            <td>Quantidade</td>
+            <td></td>
+        </tr>
+        {% for estoque in estoques %}
+        <tr> 
+            <td>{{ estoque.id }}</td>
+            <td>{{ estoque.nome_produto }}</td>
+            <td>{{ estoque.nome_fornecedor }}</td>
+            <td>{{ estoque.quantidade }}</td>
+            <td class="acao">
+                <a href="">
+                    <img src="{{ url_for('static', filename='img/edicao.png') }}" alt="Edição">
+                </a>
+                <a href=""
+                onclick="return confirm('Tem certeza que deseja excluir este produto?');">
+                    <img src="{{ url_for('static', filename='img/lixeira.png')}}" alt="Lixeira">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="" class="adicionar">
+        <img src="{{ url_for('static', filename='img/adicionar.png')}}" alt="Adicionar">
+    </a>
 {% endblock %}

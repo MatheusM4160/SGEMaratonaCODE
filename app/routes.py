@@ -2,7 +2,7 @@ from app import app
 from flask import render_template, redirect ,url_for, flash
 from app.form import RegistrarFornecedores, EditarFornecedor
 
-from app.funcoes import FornecedoresDB
+from app.funcoes import FornecedoresDB, EstoquesDB
 
 @app.route('/')
 @app.route('/fornecedores')
@@ -34,7 +34,8 @@ def editar_fornecedor(id):
 
 @app.route('/estoques')
 def estoque():
-    return render_template('estoques/estoque.html')
+    estoques_db = EstoquesDB().ler()
+    return render_template('estoques/estoque.html', estoques=estoques_db)
 
 @app.route('/perfil')
 def perfil():
