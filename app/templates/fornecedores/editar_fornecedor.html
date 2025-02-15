@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Adicionar Fornecedor{% endblock %}
+{% block title %}Editar Fornecedor{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/adicionar_fornecedores_css.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fornecedores/editar.css') }}">
 {% endblock %}
 
 {% block content %}
-    <h2>Cadastrar Fornecedor</h2>
+    <h2>Editar Fornecedor {{ nome_fornecedor }}</h2>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
@@ -22,6 +22,6 @@
             {{ form.numero_de_contato.label }}<br>
             {{ form.numero_de_contato(size=32) }}
         </p> 
-        <p>{{ form.botao_cadastrar() }}</p>
+        <p>{{ form.botao_alterar() }}</p>
     </form>
 {% endblock %}

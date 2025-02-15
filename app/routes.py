@@ -8,7 +8,7 @@ from app.funcoes import FornecedoresDB
 @app.route('/fornecedores')
 def index():
     fornecedores_db = FornecedoresDB().ler()
-    return render_template('fornecedores.html', fornecedores=fornecedores_db)
+    return render_template('fornecedores/fornecedores.html', fornecedores=fornecedores_db)
 
 @app.route('/excluir_fornecedor/<int:id>')
 def excluir_fornecedor(id):
@@ -21,7 +21,7 @@ def adicionar_fornecedores():
     if form.validate_on_submit():
         FornecedoresDB().inserir(nome_fornecedor=form.fornecedor.data, nome_produto=form.produto.data, numero_de_contato=form.numero_de_contato.data)
         return redirect('/fornecedores')
-    return render_template('adicionar_fornecedores.html', form=form)
+    return render_template('fornecedores/adicionar_fornecedores.html', form=form)
     
 @app.route('/editar_fornecedor/<int:id>', methods=['GET', 'POST'])
 def editar_fornecedor(id):
@@ -30,8 +30,12 @@ def editar_fornecedor(id):
     if form.validate_on_submit():
         FornecedoresDB().alterar_dados_fornecedor(id=id ,nome_fornecedor=form.fornecedor.data, nome_produto=form.produto.data, numero_de_contato=form.numero_de_contato.data)
         return redirect('/fornecedores')
-    return render_template('editar_fornecedor.html', nome_fornecedor=nome_fornecedor, form=form)
+    return render_template('fornecedores/editar_fornecedor.html', nome_fornecedor=nome_fornecedor, form=form)
+
+@app.route('/estoques')
+def estoque():
+    return render_template('estoques/estoque.html')
 
 @app.route('/perfil')
 def perfil():
-    return render_template('perfil.html')
+    return render_template('perfil/perfil.html')
