@@ -1,25 +1,4 @@
-import json
 import sqlite3
-
-
-db = r"app/db/db_fornecedores.json"
-
-
-
-class Fornecedores:
-    def __init__(self):
-        pass
-    
-    def salvar(self,fornecedores):
-        with open(db, "w", encoding="utf-8") as file:
-            json.dump(fornecedores, file, indent=4, ensure_ascii=False)
-
-    def ler(self):    
-        with open(db, 'r') as file:
-            db = json.load(file)
-            file.close()
-
-        return db
 
 db = r"app/db/db.sqlite"
 
@@ -50,3 +29,24 @@ class FornecedoresDB:
             cursor = con.cursor()
             cursor.execute("""DELETE FROM fornecedores WHERE id = ?""", (id,))
             con.commit()
+
+    def alterar_fornecedor(self, id, nome_fornecedor=None, nome_produto=None, numero_de_contato=None):
+        with sqlite3.connect(db) as con:
+            cursor = con.cursor()
+            cursor.execute("""SELECT nome_forncedor, nome_produto, numero_de_contato FROM fornecedores WHERE id=?""", (id,))
+            resultado = cursor.fetchone()
+
+            if resultado:
+                nome_forncedor_atual, nome_produto_atual, numero_de_contato_atual = resultado
+                novo_nome_forncedor = nome_fornecedor if nome_fornecedor is not None else nome_forncedor_atual
+                novo_nome_produto = nome_produto if nome_produto is not None else nome_produto_atual
+                novo_numero_de_contato = numero_de_contato if numero_de_contato is not None else numero_de_contato_atual
+
+                cursor.execute("""UPDATE fornecedores
+                               SET nome_fornecedor = ?,
+                               nome_produto = ?,
+                               numero_de_contato = ?
+                               WHERE id=?
+                               """, (novo_nome_forncedor, novo_nome_produto, novo_numero_de_contato, id))
+
+                con.commit()
