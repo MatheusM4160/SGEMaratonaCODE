@@ -19,7 +19,7 @@ def excluir_fornecedor(id):
 def adicionar_fornecedores():
     form = RegistrarFornecedores()
     if form.validate_on_submit():
-        FornecedoresDB().inserir(nome_fornecedor=form.fornecedor.data, nome_produto=form.produto.data, numero_de_contato=form.numero_de_contato.data)
+        FornecedoresDB().inserir(nome_fornecedor=form.fornecedor.data, nome_produto=form.produto.data, preco=form.preco.data.replace(',', '.'), numero_de_contato=form.numero_de_contato.data)
         return redirect('/fornecedores')
     return render_template('fornecedores/adicionar_fornecedores.html', form=form)
     
@@ -28,7 +28,7 @@ def editar_fornecedor(id):
     nome_fornecedor = FornecedoresDB().nome_do_fornecedor(id=id)
     form = EditarFornecedor()
     if form.validate_on_submit():
-        FornecedoresDB().alterar_dados_fornecedor(id=id ,nome_fornecedor=form.fornecedor.data, nome_produto=form.produto.data, numero_de_contato=form.numero_de_contato.data)
+        FornecedoresDB().alterar_dados_fornecedor(id=id ,nome_fornecedor=form.fornecedor.data, nome_produto=form.produto.data, preco=form.preco.data.replace(',', '.'), numero_de_contato=form.numero_de_contato.data)
         return redirect('/fornecedores')
     return render_template('fornecedores/editar_fornecedor.html', nome_fornecedor=nome_fornecedor, form=form)
 

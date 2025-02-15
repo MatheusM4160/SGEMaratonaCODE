@@ -13,6 +13,7 @@ class BancoDeDados():
                     id INTEGER PRIMARY KEY,
                     nome_fornecedor TEXT NOT NULL,
                     nome_produto TEXT NOT NULL,
+                    preco TEXT NOT NULL,
                     numero_de_contato TEXT NOT NULL)""")
         
     def excluir_todos_dados(self, nome_tabela):
@@ -49,5 +50,5 @@ class BancoDeDados():
             else:
                 print('Escolha inválida. Tente novamente.')
         
-
+BancoDeDados().excluir_tabela('fornecedores')        
 BancoDeDados().criar_fornecedores()

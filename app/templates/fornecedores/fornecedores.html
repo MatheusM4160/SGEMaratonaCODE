@@ -13,6 +13,7 @@
             <td>id</td>
             <td>Nome</td>
             <td>Produto/s</td>
+            <td>Preço</td>
             <td>Contato</td>
             <td></td>
         </tr>
@@ -21,6 +22,7 @@
             <td>{{ fornecedor.id }}</td>
             <td>{{ fornecedor.nome_fornecedor }}</td>
             <td>{{ fornecedor.nome_produto }}</td>
+            <td>{{ fornecedor.preco }}</td>
             <td>{{ fornecedor.numero_de_contato }}</td>
             <td class="acao">
                 <a href="{{ url_for('editar_fornecedor', id=fornecedor.id) }}">
