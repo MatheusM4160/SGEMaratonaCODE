@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Fornecedores - Sistema de Estoque</title>
+        <link rel="stylesheet" href="{{ url_for('fornecedores_bp.static', filename='css/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('fornecedores_bp.static', filename='css/fornecedores.css')}}">
+    </head>
+    <body>
+        <div class="cabecalho">
+            <a href="{{ url_for('fornecedores_bp.index') }}">
+                <button>Fornecedores</button>
+            </a>
+            <a href="/estoques">
+                <button>Estoque</button>
+            </a>
+            <a href="">
+                <button>Compras</button>
+            </a>
+            <a href="">
+                <button>Gastos</button>
+            </a>
+            <a href="/perfil" id="perfil">
+                <img src="{{ url_for('fornecedores_bp.static', filename='img/perfil.png') }}" alt="Perfil">
+            </a>
+        </div>
+        <hr>
+        <div>
+            <table border="1">
+                <tr>
+                    <td>id</td>
+                    <td>Nome</td>
+                    <td>Produto/s</td>
+                    <td>Preço</td>
+                    <td>Contato</td>
+                    <td></td>
+                </tr>
+                {% for fornecedor in fornecedores %}
+                <tr> 
+                    <td>{{ fornecedor.id }}</td>
+                    <td>{{ fornecedor.nome_fornecedor }}</td>
+                    <td>{{ fornecedor.nome_produto }}</td>
+                    <td>{{ fornecedor.preco }}</td>
+                    <td>{{ fornecedor.numero_de_contato }}</td>
+                    <td class="acao">
+                        <a href="{{ url_for('fornecedores_bp.editar_fornecedor', id=fornecedor.id) }}">
+                            <img src="{{ url_for('fornecedores_bp.static', filename='img/edicao.png') }}" alt="Edição">
+                        </a>
+                        <a href="{{ url_for('fornecedores_bp.excluir_fornecedor', id=fornecedor.id) }}"
+                        onclick="return confirm('Tem certeza que deseja excluir este fornecedor?');">
+                            <img src="{{ url_for('fornecedores_bp.static', filename='img/lixeira.png')}}" alt="Lixeira">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <a href="{{ url_for('fornecedores_bp.adicionar_fornecedores') }}" class="adicionar">
+                <img src="{{ url_for('fornecedores_bp.static', filename='img/adicionar.png')}}" alt="Adicionar">
+            </a>
+        </div>
+    </body>
+</html>
