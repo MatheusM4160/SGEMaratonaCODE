@@ -74,3 +74,37 @@ class EstoquesDB:
             cursor.execute("""SELECT * FROM estoques""")
             resultado = fetch_all_as_dict(cursor)
             return resultado
+        
+    def inserir(self, nome_produto, nome_fornecedor, quantidade):
+        with sqlite3.connect(db) as con:
+            cursor = con.cursor()
+            cursor.execute("""INSERT INTO estoques (nome_produto, nome_fornecedor, quantidade)
+                        VALUES (?, ?, ?)""", (nome_produto, nome_fornecedor, quantidade))
+            con.commit()
+
+    def excluir_estoque(self, id):
+        with sqlite3.connect(db) as con:
+            cursor = con.cursor()
+            cursor.execute("""DELETE FROM estoques WHERE id = ?""", (id,))
+            con.commit()
+
+    def alterar_dados_estoque(self, id, nome_produto=None, nome_fornecedor=None, quantidade=None):
+        with sqlite3.connect(db) as con:
+            cursor = con.cursor()
+            cursor.execute("""SELECT nome_produto, nome_fornecedor, quantidade FROM estoques WHERE id=?""", (id,))
+            resultado = cursor.fetchone()
+
+            if resultado:
+                nome_produto_atual, nome_fornecedor_atual, quantidade_atual = resultado
+                novo_nome_produto = nome_produto if nome_produto is not "" else nome_produto_atual
+                novo_nome_fornecedor = nome_fornecedor if nome_fornecedor is not "" else nome_fornecedor_atual
+                nova_quantidade = quantidade if quantidade is not "" else quantidade_atual
+
+                cursor.execute("""UPDATE estoques
+                               SET nome_produto = ?,
+                               nome_fornecedor = ?,
+                               quantidade = ?
+                               WHERE id = ?
+                               """, (novo_nome_produto, novo_nome_fornecedor, nova_quantidade, id))
+
+                con.commit()

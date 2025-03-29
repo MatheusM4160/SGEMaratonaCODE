@@ -25,7 +25,7 @@
         </div>
         <hr>
         <div>
-            <h2>Adicionar Produto ao Estoque</h2>
+            <h2>Editar Estoque</h2>
             <form method="post" action="" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
@@ -40,7 +40,7 @@
                     {{ form.quantidade.label }}<br>
                     {{ form.quantidade(size=32) }}
                 </p>
-                <p>{{ form.botao_cadastrar() }}</p>
+                <p>{{ form.botao_alterar() }}</p>
             </form>
         </div>
     </body>

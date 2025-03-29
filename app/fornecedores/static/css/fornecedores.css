@@ -51,13 +51,17 @@ table td.acao img:hover {
 
 /* Estilo para o link de adicionar */
 .adicionar {
-    display: inline-block;
+    display: flex;
+    align-items: right;
+    justify-content: right;
     margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .adicionar img {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     transition: transform 0.2s;
 }

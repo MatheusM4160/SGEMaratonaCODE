@@ -40,17 +40,18 @@
                     <td>{{ estoque.nome_fornecedor }}</td>
                     <td>{{ estoque.quantidade }}</td>
                     <td class="acao">
-                        <a href="">
+                        <a href="{{ url_for('estoque_bp.editar_estoque', id=estoque.id) }}">
                             <img src="{{ url_for('estoque_bp.static', filename='img/edicao.png') }}" alt="Edição">
                         </a>
-                        <a href="" onclick="return confirm('Tem certeza que deseja excluir este produto?');">
+                        <a href="{{ url_for('estoque_bp.excluir_estoque', id=estoque.id) }}"
+                        onclick="return confirm('Tem certeza que deseja excluir este estoque?');">
                             <img src="{{ url_for('estoque_bp.static', filename='img/lixeira.png')}}" alt="Lixeira">
                         </a>
                     </td>
                 </tr>
                 {% endfor %}
             </table>
-            <a href="" class="adicionar">
+            <a href="{{ url_for('estoque_bp.adicionar_estoque') }}" class="adicionar">
                 <img src="{{ url_for('estoque_bp.static', filename='img/adicionar.png')}}" alt="Adicionar">
             </a>
         </div>
