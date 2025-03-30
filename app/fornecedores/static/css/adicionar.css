@@ -50,3 +50,43 @@ form p input[type="submit"] {
 form p input[type="submit"]:hover {
     background-color: #4e4e4e;
 }
+
+/* Media Queries para Responsividade */
+
+/* Para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+    }
+    form {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    form p input[type="text"] {
+        padding: 7px;
+        margin-bottom: 12px;
+    }
+    form p input[type="submit"] {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Para telas com largura máxima de 480px */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+    form {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    form p input[type="text"] {
+        padding: 6px;
+        margin-bottom: 10px;
+    }
+    form p input[type="submit"] {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

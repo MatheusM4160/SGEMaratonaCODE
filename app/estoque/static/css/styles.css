@@ -19,6 +19,7 @@ body {
     align-items: center;
     background-color: #333;
     padding: 10px 20px;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
 }
 
 .cabecalho a {
@@ -69,4 +70,56 @@ div {
 .block p {
     font-size: 16px;
     line-height: 1.5;
+}
+
+/* Media Queries para Responsividade */
+
+/* Para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+    .cabecalho button {
+        font-size: 14px;
+        padding: 8px;
+    }
+    #perfil img {
+        width: 35px;
+        height: 35px;
+    }
+    div {
+        padding: 15px;
+    }
+    .block h2 {
+        font-size: 20px;
+    }
+    .block p {
+        font-size: 14px;
+    }
+}
+
+/* Para telas com largura máxima de 480px */
+@media (max-width: 480px) {
+    .cabecalho {
+        padding: 8px 10px;
+    }
+    .cabecalho button {
+        font-size: 12px;
+        padding: 6px;
+    }
+    #perfil img {
+        width: 30px;
+        height: 30px;
+    }
+    div {
+        padding: 10px;
+    }
+    .block h2 {
+        font-size: 18px;
+    }
+    .block p {
+        font-size: 12px;
+    }
 }

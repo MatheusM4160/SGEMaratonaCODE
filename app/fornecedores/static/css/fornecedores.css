@@ -6,6 +6,14 @@ table {
     font-family: Arial, sans-serif;
 }
 
+/* Container responsivo para a tabela */
+.tabela-container {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal em telas menores */
+    position: relative;
+    display: block;
+}
+
 /* Estilo para o cabeçalho da tabela */
 table th {
     background-color: #f2f2f2;
@@ -44,19 +52,12 @@ table td.acao img:hover {
     transform: scale(1.2);
 }
 
-.tabela-container {
-    position: absolute;
-    display: inline-block;
-}
-
 /* Estilo para o link de adicionar */
 .adicionar {
     display: flex;
-    align-items: right;
-    justify-content: right;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px;
 }
 
 .adicionar img {
@@ -68,4 +69,45 @@ table td.acao img:hover {
 
 .adicionar img:hover {
     transform: scale(1.1);
+}
+
+/* Media Queries para Responsividade */
+
+/* Para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    table th,
+    table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+    table th {
+        padding: 8px;
+    }
+    table td.acao img {
+        width: 20px;
+        height: 20px;
+        margin: 0 3px;
+    }
+    .adicionar img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Para telas com largura máxima de 480px */
+@media (max-width: 480px) {
+    table th,
+    table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+    table td.acao img {
+        width: 18px;
+        height: 18px;
+        margin: 0 2px;
+    }
+    .adicionar img {
+        width: 35px;
+        height: 35px;
+    }
 }

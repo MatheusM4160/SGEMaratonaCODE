@@ -27,7 +27,7 @@ form p label {
     color: #333;
 }
 
-/* Estilo para os campos de entrada de texto */
+/* Estilo para os campos de entrada de texto e seleção */
 form p input[type="text"],
 form p select {
     width: 100%;
@@ -53,4 +53,48 @@ form p input[type="submit"] {
 
 form p input[type="submit"]:hover {
     background-color: #4e4e4e;
+}
+
+/* Media Queries para Responsividade */
+
+/* Para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+    }
+    form {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    form p input[type="text"],
+    form p select {
+        padding: 7px;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    form p input[type="submit"] {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Para telas com largura máxima de 480px */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+    form {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    form p input[type="text"],
+    form p select {
+        padding: 6px;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    form p input[type="submit"] {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
 }
